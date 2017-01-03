@@ -107,7 +107,7 @@ function makanow(theKittens){
 	 		imgParent = imgParent.parentNode;
 
 	 		if (imgParent.nodeName === "A") {
-	 			parenttag = String(imgParent.toLowerCase());
+	 			parenttag = String(imgParent).toLowerCase();
 	 		}
 	 	}
 		
