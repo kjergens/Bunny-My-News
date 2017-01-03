@@ -95,7 +95,7 @@ function makanow(theKittens){
 	{	
 		var alttext = String(img.alt).toLowerCase();
 		var imgsrc = String(img.src).toLowerCase();
-		var parenttag = img.parentElement.innerHTML.toLowerCase();
+		var parenttag =  String(img.parentElement).toLowerCase(); // the href is more reliable than innnerHTML
 		var imgwidth = img.clientWidth;
 		var imgheight = img.clientHeight;
 
@@ -107,7 +107,7 @@ function makanow(theKittens){
 	 		imgParent = imgParent.parentNode;
 
 	 		if (imgParent.nodeName === "A") {
-	 			parenttag = imgParent.innerHTML.toLowerCase();
+	 			parenttag = String(imgParent.toLowerCase());
 	 		}
 	 	}
 		
