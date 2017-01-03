@@ -3,7 +3,7 @@
 // by Tom Royal 
 // tomroyal.com
 
-var makaTesting = false; // for debugging only
+var makaTesting = true; // for debugging only
 
 if (makaTesting){
 	console.log('maka initiated');
@@ -98,6 +98,18 @@ function makanow(theKittens){
 		var parenttag = img.parentElement.innerHTML.toLowerCase();
 		var imgwidth = img.clientWidth;
 		var imgheight = img.clientHeight;
+
+		// If img's immediate parent is not an anchor tag, 
+		//   travel up the DOM to find it. This is especially
+		//   useful for side menus.
+		var imgParent = img.parentNode, count = 0, MAX_LEVELS = 5;
+		while (imgParent.nodeName != "A" && count++ < MAX_LEVELS) {
+	 		imgParent = imgParent.parentNode;
+
+	 		if (imgParent.nodeName === "A") {
+	 			parenttag = imgParent.innerHTML.toLowerCase();
+	 		}
+	 	}
 		
 		blacklist.forEach(function(blist) {	
 			if ((alttext.indexOf(blist) != -1) || (imgsrc.indexOf(blist) != -1) || (parenttag.indexOf(blist) != -1)){
