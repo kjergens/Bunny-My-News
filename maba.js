@@ -1,12 +1,12 @@
-// maka.js - part of make america kittens again
+// maba.js - part of make america bunnies again
 // v1.1.1
-// by Tom Royal 
+// by Katie Jergens version of Tom Royal 
 // tomroyal.com
 
 var debug = true; // for debugging only
 
 if (debug){
-	console.log('maka initiated');
+	console.log('maba initiated');
 	
 	if (typeof jQuery != 'undefined') {  
     	console.log('jQ loaded');
@@ -17,10 +17,8 @@ if (debug){
 // init blacklist
 var blacklistWord = "trump";
 
-// kitten data!
-// Note - update 1.0.1 moves these to Amazon S3, as my old server wasn't designed to take the amount of traffic that MAKA was generating. If you use this code, please host your own copy of the images - thanks!
 
-var theKittens = {"kitten": [
+var bunnies = {"bunny": [
     {"file": "1.jpg", "Credit": "Crsan", "URL": "http://www.flickr.com/photos/crsan/2571204498/", "type":"0"},
 	{"file": "2.jpg", "Credit": "Abcrumley", "URL": "http://www.flickr.com/photos/crumley/160490011/", "type":"0"},
 	{"file": "3.jpg", "Credit": "Woodchild2010", "URL": "http://www.flickr.com/photos/woodchild/5335939044/", "type":"0"},
@@ -59,23 +57,33 @@ var theKittens = {"kitten": [
 
 
 	if (debug){
-		console.log('maka processing blacklist is '+blacklist);
+		console.log('maba processing blacklist is '+blacklistWord);
 	}
 
-	// called on page load. Searches all img alt text and srcs for the strings in blacklist, replaces with kittens
-	var pagepics=document.getElementsByTagName("img"), i=0, img;	
+	// Search all img alt text and srcs for the strings in blacklist, replaces with bunnies
+	var pagepics=document.getElementsByTagName("img"), i=0, img;	// get all images
+
+	if (debug){
+			console.log('maba processing...'+ pagepics.length + ' images found.');
+		}
+
+	// Loop through images, detect blacklist and replace
 	while (img = pagepics[i++])
 	{	
+
 		var alttext = String(img.alt).toLowerCase();
 		var imgsrc = String(img.src).toLowerCase();
 		var parenttag =  String(img.parentElement).toLowerCase(); // the href is more reliable than innnerHTML
 		var imgwidth = img.clientWidth;
 		var imgheight = img.clientHeight;
 
-		// If img's immediate parent is not an anchor tag, 
-		//   travel up the DOM to find it. This is especially
-		//   useful for side menus.
-		var imgParent = img.parentNode, count = 0, MAX_LEVELS = 5;
+		// Identify parent anchor tag. 
+		var imgParent = img.parentNode;
+		var count = 0;
+		var MAX_LEVELS = 5; // Give up after 5 levels
+
+		// If img's immediate parent is not the anchor tag travel up the DOM 
+		//   to find it. This is especially useful for side menus.
 		while (imgParent.nodeName != "A" && count++ < MAX_LEVELS) {
 	 		imgParent = imgParent.parentNode;
 
@@ -84,25 +92,36 @@ var theKittens = {"kitten": [
 	 		}
 	 	}
 
+
+		if (debug){
+			console.log('maba processing...'+ i + '. ' + parenttag);
+		}
+
+	 	// If find the blacklist word in alt tag, img src link or href link, replace image src.
 		if ((alttext.indexOf(blacklistWord) != -1) || (imgsrc.indexOf(blacklistWord) != -1) || (parenttag.indexOf(blacklistWord) != -1)){
-			var randk = Math.floor(Math.random() * 32) + 1
-			img.src = 'https://s3.amazonaws.com/makapics/'+theKittens.kitten[randk].file+'';
+			var randk = Math.floor(Math.random() * 32) + 1;
+			img.src = 'https://s-media-cache-ak0.pinimg.com/736x/0a/8b/91/0a8b91f0bfbbcbc65fb7d43cd9ff4c78.jpg'; // hard-coded for now
+			//'https://s3.amazonaws.com/makapics/'+theKittens.kitten[randk].file+'';
 			img.width = imgwidth;
 			img.height = imgheight;
+
+				if (debug){
+					console.log('maba processing...'+ imgsrc);
+				}
 			
-			if (theKittens.kitten[randk].type == 0){
-				img.alt = 'Photo by '+theKittens.kitten[randk].Credit+' source '+theKittens.kitten[randk].URL+'';
-			}
-			else {
-				img.alt = 'Photo by '+theKittens.kitten[randk].Credit+'';
-			};
+			// if (theKittens.kitten[randk].type == 0){
+			// 	img.alt = 'Photo by '+theKittens.kitten[randk].Credit+' source '+theKittens.kitten[randk].URL+'';
+			// }
+			// else {
+			// 	img.alt = 'Photo by '+theKittens.kitten[randk].Credit+'';
+			// };
 		}
 
 	}
 		
 
 	if (debug){
-		console.log('maka processing complete');
+		console.log('maba processing complete');
 	}	    
 
 
