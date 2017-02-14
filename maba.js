@@ -18,17 +18,30 @@ if (debug){
 // TODO: let user configure this
 var blacklistWord = "trump";
 
+var bunnies = [
+"http://www.publicdomainpictures.net/view-image.php?image=31505&picture=my-cute-bunny-pet", //0
+"https://pixabay.com/p-1711286/?no_redirect", //1
+"http://www.publicdomainpictures.net/view-image.php?image=82704&picture=bunny-rabbit", //2
+"http://maxpixel.freegreatpicture.com/Brown-Bunny-Spring-Grass-Rabbit-Green-Mammal-214540", //3
+"https://www.flickr.com/photos/34739556@N04/14550572871", //4
+"https://www.flickr.com/photos/tomitapio/5369631094", //5
+"https://www.flickr.com/photos/nblumhardt/3500477551", // 6
+"https://commons.wikimedia.org/wiki/File:Serious_bunny_(5767442711).jpg", // 7
+"https://upload.wikimedia.org/wikipedia/commons/6/61/Holland_lop_bunny.JPG", // 8
+"https://cdn.pixabay.com/photo/2016/01/19/14/55/bunny-1149060_960_720.jpg" // 9
+]
+
 
 	if (debug){
-		console.log('maba processing blacklist is '+blacklistWord);
+		console.log('maba processing blacklist is '+ blacklistWord);
 	}
 
 	// Search all img alt text and srcs for the strings in blacklist, replaces with bunnies
 	var pagepics=document.getElementsByTagName("img"), i=0, img;	// get all images
 
 	if (debug){
-			console.log('maba processing...'+ pagepics.length + ' images found.');
-		}
+		console.log('maba processing...'+ pagepics.length + ' images found.');
+	}
 
 	// Loop through images, detect blacklist and replace
 	while (img = pagepics[i++])
@@ -62,23 +75,16 @@ var blacklistWord = "trump";
 
 	 	// If find the blacklist word in alt tag, img src link or href link, replace image src.
 		if ((alttext.indexOf(blacklistWord) != -1) || (imgsrc.indexOf(blacklistWord) != -1) || (href.indexOf(blacklistWord) != -1)){
-			var randk = Math.floor(Math.random() * 5) + 1;
+			var randk = Math.floor(Math.random() * 10);
 			img.src = 'https://s3.amazonaws.com/katieinbrooklyn.com/images/maba/' + randk + '.jpg'; 
+			img.alt = 'Photo source ' + bunnies[randk];
 			img.width = imgwidth;
 			img.height = imgheight;
 
-				if (debug){
-					console.log('maba processing...'+ imgsrc);
-				}
-			
-			// if (theKittens.kitten[randk].type == 0){
-			// 	img.alt = 'Photo by '+theKittens.kitten[randk].Credit+' source '+theKittens.kitten[randk].URL+'';
-			// }
-			// else {
-			// 	img.alt = 'Photo by '+theKittens.kitten[randk].Credit+'';
-			// };
+			if (debug){
+				console.log('maba processing...'+ imgsrc);
+			}
 		}
-
 	}
 		
 

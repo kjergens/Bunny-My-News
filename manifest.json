@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
-  "name": "Make America Bunnies Again",
+  "name": "Bunny My News",
   "description": "Replace images of Donald Trump with bunnies, because it's bad enough to read the news.",
   "version": "1.0.0",
 
-  "icons": { "48": "1.png",
-          "128": "1.png" },
+  "icons": { "48": "maba48.png",
+          "128": "maba128.png" },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
