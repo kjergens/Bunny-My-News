@@ -19,16 +19,16 @@ if (debug){
 var blacklistWord = "trump";
 
 var bunnies = [
-"http://www.publicdomainpictures.net/view-image.php?image=31505&picture=my-cute-bunny-pet", //0
-"https://pixabay.com/p-1711286/?no_redirect", //1
-"http://www.publicdomainpictures.net/view-image.php?image=82704&picture=bunny-rabbit", //2
-"http://maxpixel.freegreatpicture.com/Brown-Bunny-Spring-Grass-Rabbit-Green-Mammal-214540", //3
-"https://www.flickr.com/photos/34739556@N04/14550572871", //4
-"https://www.flickr.com/photos/tomitapio/5369631094", //5
-"https://www.flickr.com/photos/nblumhardt/3500477551", // 6
-"https://commons.wikimedia.org/wiki/File:Serious_bunny_(5767442711).jpg", // 7
-"https://upload.wikimedia.org/wikipedia/commons/6/61/Holland_lop_bunny.JPG", // 8
-"https://cdn.pixabay.com/photo/2016/01/19/14/55/bunny-1149060_960_720.jpg" // 9
+"Photo by Maliz Ong. Image has been resized. Source www.publicdomainpictures.net/view-image.php?image=31505&picture=my-cute-bunny-pet", //0
+"Source pixabay.com/p-1711286/", //1
+"Photo by Karen Arnold. Image has been resized. Source www.publicdomainpictures.net/view-image.php?image=82704", //2
+"Image has been resized. Source maxpixel.freegreatpicture.com/Brown-Bunny-Spring-Grass-Rabbit-Green-Mammal-214540", //3
+"Photo by rawdonfox on Flicker. Image has been resized. Source www.flickr.com/photos/34739556@N04/14550572871", //4
+"Photo by Tomi Tapio on Flicker. Image has been resized. Source www.flickr.com/photos/tomitapio/5369631094", //5
+"Photo by Nicholas Blumhardt on Flickr. Image has been resized. Source www.flickr.com/photos/nblumhardt/3500477551", // 6
+"This image was originally posted to Flickr by wstryder at http://flickr.com/photos/36514345@N00/5767442711. Image has been resized. Source commons.wikimedia.org/wiki/File:Serious_bunny_(5767442711).jpg", // 7
+"Image has been resized. Source upload.wikimedia.org/wikipedia/commons/6/61/Holland_lop_bunny.JPG", // 8
+"Image has been resized. Source cdn.pixabay.com/photo/2016/01/19/14/55/bunny-1149060_960_720.jpg" // 9
 ]
 
 
@@ -77,7 +77,8 @@ var bunnies = [
 		if ((alttext.indexOf(blacklistWord) != -1) || (imgsrc.indexOf(blacklistWord) != -1) || (href.indexOf(blacklistWord) != -1)){
 			var randk = Math.floor(Math.random() * 10);
 			img.src = 'https://s3.amazonaws.com/katieinbrooklyn.com/images/maba/' + randk + '.jpg'; 
-			img.alt = 'Photo source ' + bunnies[randk];
+			img.alt = bunnies[randk];
+			img.title = bunnies[randk];
 			img.width = imgwidth;
 			img.height = imgheight;
 
