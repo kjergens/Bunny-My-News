@@ -1,7 +1,7 @@
 // bmn.js - part of make america bunnies again
 // v1.1.1
-// by Katie Jergens version of Tom Royal 
-// tomroyal.com
+// by Katie Jergens (forked and edited from Tom Royal's Make America Kittens Again tomroyal.com)
+// https://github.com/kjergens/Bunny-My-News
 
 var debug = false; // for debugging only
 
