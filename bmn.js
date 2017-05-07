@@ -30,7 +30,12 @@ var bunnies = [
 "Image has been resized. Source upload.wikimedia.org/wikipedia/commons/6/61/Holland_lop_bunny.JPG", // 8
 "Image has been resized. Source cdn.pixabay.com/photo/2016/01/19/14/55/bunny-1149060_960_720.jpg", // 9
 "Image has been resized. Source https://pixabay.com/en/hare-animals-gray-hare-rabbit-1751616/", //10
-"Image has been resized. Source https://pixabay.com/en/rabbit-animals-nature-hay-1644601/" //11
+"Image has been resized. Source https://pixabay.com/en/rabbit-animals-nature-hay-1644601/", //11
+"Bunny My News", //12
+"Bunny My News", //13
+"Bunny My News", //14
+"Bunny My News", //15
+"Bunny My News" //16
 ]
 
 
@@ -77,7 +82,7 @@ var bunnies = [
 
 	 	// If find the blacklist word in alt tag, img src link or href link, replace image src.
 		if ((alttext.indexOf(blacklistWord) != -1) || (imgsrc.indexOf(blacklistWord) != -1) || (href.indexOf(blacklistWord) != -1)){
-			var randk = Math.floor(Math.random() * 10);
+			var randk = Math.floor(Math.random() * bunnies.length);
 			img.src = 'https://s3.amazonaws.com/katieinbrooklyn.com/images/maba/' + randk + '.jpg'; 
 			img.alt = bunnies[randk];
 			img.title = bunnies[randk];
