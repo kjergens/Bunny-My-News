@@ -57,7 +57,17 @@ var bunnies = [
 "Bunny My News", //35
 "Bunny My News", //36
 "Bunny My News", //37
-"Bunny My News" //38
+"Bunny My News", //38
+"Bunny My News", //39
+"Bunny My News", //40
+"Bunny My News", //41
+"Bunny My News", //42
+"Bunny My News", //43
+"Bunny My News", //44
+"Bunny My News", //45
+"Bunny My News", //46
+"Bunny My News", //47
+"Bunny My News" //48
 ]
 
 
